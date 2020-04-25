@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+押韻提詞器
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
+
+{% block body %}
+  <p class="query">{{ query }}</p>
+  <div class="container row">
+    {% if not results %}
+      <div class="error">输入有误，当前只支持最多四押搜索，且只能为中文搜索。</div>
+    {% else %}
+      {% for word in results %}
+        <div class="word">{{ word }}</div>
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

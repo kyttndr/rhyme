@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+押韻提詞器
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block body %}
+  <form id="search-form" method="GET" class="rhyme-caja" action="{% url 'search' %}">
+    <input type="text" name="q" class="rhyme-txt" placeholder="搜索词...（最多支持三押）"/>
+    <a href="javascript:$('#search-form').submit();" class="rhyme-btn">
+      <i class="fas fa-search"></i>
+    </a>
+  </form>
+{% endblock %}
+
+{% block js %}
+  <script src="{% static 'javascript/index.js' %}"></script>
+{% endblock %}

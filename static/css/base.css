@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0;
+  /* background: #e84118; */
+  background: #e63946;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+@font-face {
+  font-family: 'archer';
+  src: url('../font/archer.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'disco3';
+  src: url('../font/disco3.ttf') format('truetype');
+}
+
+.title {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'archer';
+  font-size: 50px;
+  font-style: italic;
+  font-weight: bold;
+  margin: 0.67em 0;
+}
