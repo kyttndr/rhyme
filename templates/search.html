@@ -12,7 +12,7 @@
 {% block body %}
   <p class="query">{{ query }}</p>
   <div class="container row">
-    {% if not results %}
+    {% if errors %}
       <div class="error">输入有误，当前只支持最多四押搜索，且只能为中文搜索。</div>
     {% else %}
       {% for word in results %}

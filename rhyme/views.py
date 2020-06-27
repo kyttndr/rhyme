@@ -1,9 +1,7 @@
 from django.views.generic import TemplateView
 from rhyme.settings import STATIC_DIR
-from .utils import find_chinese
-import functools
+from .utils import find_chinese, get_pinyin_key
 import json
-from pypinyin import pinyin, Style
 
 
 class IndexView(TemplateView):
@@ -19,17 +17,15 @@ class SearchView(TemplateView):
         context['query'] = query
         # dealing input
         words = find_chinese(query)
-        if not words:
-            context['results'] = []
+        if len(words) < 2 or len(words) > 4:
+            context['errors'] = ['输入有误，当前只支持双押至四押搜索，且只能为中文搜索。']
         else:
-            py = pinyin(words, style=Style.FINALS, errors='ignore')
-            key = functools.reduce(lambda a, b : a + b, py)
-            key = '-'.join(key)
+            key = get_pinyin_key(words)
             # read data
             with open(STATIC_DIR + '/data/result.json', 'r') as f:
                 rhyme_dict = json.load(f)
             try:
                 context['results'] = rhyme_dict[key]
             except KeyError:
-                context['results'] = []
+                context['errors'] = ['抱歉，词库暂时没有相关押韵词条。']
         return context
