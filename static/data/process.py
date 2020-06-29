@@ -14,7 +14,7 @@ for k in rhyme_dict:
         lw = lazy_pinyin(word)
         if len(key) == len(lw):
             for i, w in enumerate(lw):
-                if w in ['ri', 'zhi', 'chi', 'shi']:
+                if w in ['ri', 'zhi', 'chi', 'shi', 'zi', 'ci', 'si']:
                     key[i] = 'ri'
         key = '-'.join(key)
         if key not in new_rhyme_dict:
